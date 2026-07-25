@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: analytics-service
+  datasource:
+    url: ${ANALYTICS_DB_URL:jdbc:postgresql://localhost:5433/analytics_db}
+    username: ${POSTGRES_USER:kafka_order}
+    password: ${POSTGRES_PASSWORD:kafka_order_local}
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9093}
+    client-id: ${spring.application.name}
+    consumer:
+      group-id: analytics-service
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+      isolation-level: read_committed
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    listener:
+      ack-mode: manual_immediate
+    streams:
+      application-id: order-analytics
+      properties:
+        processing.guarantee: exactly_once_v2
+        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+
+server:
+  port: ${ANALYTICS_SERVICE_PORT:8085}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+app:
+  kafka:
+    topics:
+      order-created: order.created.v1
+      order-completed: order.completed.v1
+      order-cancelled: order.cancelled.v1
+      order-metrics: order.metrics.v1
+      dlq: order.events.dlq.v1
+
