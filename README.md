@@ -65,7 +65,12 @@ docker compose down -v
 | analytics-service | 8085 | analytics_db | Tổng hợp dữ liệu bằng Kafka Streams |
 | shared-events | - | - | Event contract dùng chung |
 
-Xem [docs/architecture.md](docs/architecture.md) và
-[infrastructure/kafka/topics.md](infrastructure/kafka/topics.md) trước khi bắt
-đầu viết code.
+Nếu bắt đầu học Kafka từ số 0, hãy đi theo
+[LEARNING_ROADMAP.md](LEARNING_ROADMAP.md). Tài liệu này giải thích thuật ngữ,
+chia project thành từng giai đoạn, cung cấp thí nghiệm gây lỗi và tiêu chí hoàn
+thành cho mỗi phần.
 
+Tài liệu bổ sung:
+
+- [docs/architecture.md](docs/architecture.md)
+- [infrastructure/kafka/topics.md](infrastructure/kafka/topics.md)
