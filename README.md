@@ -73,4 +73,5 @@ thành cho mỗi phần.
 Tài liệu bổ sung:
 
 - [docs/architecture.md](docs/architecture.md)
+- [Giai đoạn 2 - Order Producer](docs/STAGE_2_ORDER_PRODUCER.md)
 - [infrastructure/kafka/topics.md](infrastructure/kafka/topics.md)

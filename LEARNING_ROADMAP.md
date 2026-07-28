@@ -841,6 +841,9 @@ docker compose exec kafka \
 
 ## 10. Giai đoạn 2 - Producer đầu tiên trong Order Service
 
+> Hướng dẫn thực hành và code mẫu chi tiết:
+> [docs/STAGE_2_ORDER_PRODUCER.md](docs/STAGE_2_ORDER_PRODUCER.md).
+
 ### Mục tiêu
 
 Tạo một luồng nhỏ nhất:
